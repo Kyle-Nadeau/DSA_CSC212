@@ -88,21 +88,29 @@ std::string koch_snowflake(int degree){
     return commands;
 }
 
-std::string snowflake(int degree){
-    if(degree == 0){
+std::string snowflake(int degree) {
+    std::string curve;
+    if (degree == 0) {
         return "F ";
     }
     std::string commands = "";
 
-    std::string snowflake1 = snowflake(degree - 1);
-    for (char c : snowflake1) {
-        if (c == 'F') {
-            commands += "F+F--F+F ";
-        } else {
-            commands += c;
-        }
-    }
+    // Rotate the curve 60 degrees to the left. 
+    curve = snowflake(degree - 60);
+    commands += "- ";
+    commands += curve;
 
+    // Rotate the curve 120 degrees to the right.
+    curve = snowflake(degree - 60);
+    commands += "+ ";
+    commands += curve;
+
+    // Rotate the curve 60 degrees to the left.
+    curve = snowflake(degree - 60);
+    commands += "- ";
+    commands += curve;
+
+    // Return the generated commands.
     return commands;
 }
 /*
