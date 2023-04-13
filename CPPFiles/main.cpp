@@ -10,20 +10,49 @@ std::string sierpinski_triangle(int degree, bool type1);
 std::string closing_time(int degree);
 
 
-
-//todo for triangle - GUI to use user input to decide degree instead of hardcoded
 int main(){
-    std::ofstream of("C:\\Users\\amade\\OneDrive\\Desktop\\School\\Programming\\C++\\DSA\\sierpinski.txt");
 
-    int degree = 6;
+    std::string input = "";
 
-    //of << koch_snowflake(degree);
-    std::string l_system=  sierpinski_triangle(degree, true);
-    l_system +=closing_time(degree);
+    while(input != "Exit"){
+        std::cout << "Enter the corresponding number to the Recursive Graphic you would like to use:" << std::endl;
+        std::cout << "1. Koch Snowflake" << std::endl;
+        std::cout << "2. Sierpinski Triangle" << std::endl;
+        std::cout << "3. Hilbert Curve" << std::endl;
+        std::cout << "Type Exit to end program." << std::endl;
+        std::cin >> input;
+
+        if(input == "Exit"){
+            break;
+        }
+        else if(input == "1"){
+            //Insert Koch Snowflake functions here
+        }
+        else if(input == "2"){
+            std::ofstream of("C:\\Users\\amade\\OneDrive\\Desktop\\School\\Programming\\C++\\DSA\\sierpinski.txt");
+
+            std::cout << "Enter the desired degree of triangle you would like displayed" << std::endl;
+            int degree;
+
+            std::cin >> degree;
+
+            //of << koch_snowflake(degree);
+            std::string l_system=  sierpinski_triangle(degree, true);
+            l_system +=closing_time(degree);
 
 
-    of<<l_system;
-    //of<<drawTriangle(degree);
+            of<<l_system;
+            //of<<drawTriangle(degree);
+        }
+        else if (input == "3"){
+            //Insert Hilbert Curve functions here
+        }
+        else{
+            std::cout << std::endl << "Invalid input, please try again\n" << std::endl;
+        }
+    }
+
+    std::cout << "Thank you for using our program" << std::endl;
 
     return 0;
 }
@@ -64,7 +93,6 @@ std::string snowflake(int degree){
  * Three: F - F + F + F - F - F F + F - F + F + F - F + F F - F - F + F + F - F - F F F F - F F F F
  *
  * Four: F - F + F + F - F - F F + F - F + F + F - F + F F - F - F + F + F - F - F F F F + F - F + F + F - F - F F + F - F + F + F - F + F F - F - F + F + F - F + F F F F - F - F + F + F - F - F F + F - F + F + F - F + F F - F - F + F + F - F - F F F F F F F F - F F F F F F F F
-
     Found repeating pattern 1: F - F + F + F - F - F F
     Other repeating pattern 2: F - F + F + F - F + F F
                             3: F F - F - F + F + F - F Inverse of first pattern
@@ -73,17 +101,13 @@ std::string snowflake(int degree){
     Three uses pattern 1, +, pattern 2, -, pattern 1, "F F - F F F F" (half of len # of F, -, len # of F)
     Four uses pattern 1, +, pattern 2, -, pattern 1, pattern 2 inverse, -, pattern 2 inverse, +, pattern 1 inverse,
     To close triangle:  - len # of F (?)
-
  bruh
-
     Found repeating pattern 1: F - F + F + F - F   (realized removing F F from patterns caused them all to be identical lol)
-
     closing formula:  -,  (F len number of times)
-
     Two uses pattern, closing formula, closing formula
     Three uses formula for 2 minus 1 closing formula, +, pattern, + half len # of F, -, pattern, closing formula, closing formula
     Four uses  formula for 3 minus closing 1 formula
-    
+
 */
 std::string sierpinski_triangle(int degree, bool type) {
     //base
