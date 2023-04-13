@@ -87,8 +87,9 @@ std::string koch_snowflake(int degree){
     return commands;
 }
 //Run plotter with 60 instead of 120
-// one: F - -  F - -  F
+// one: F - -  F - -  F <- this will run correctly with base case currently
 // Two: F + F - - F + F - - F + F - - F + F - - F + F - - F + F
+// So two replaces each F in first with the pattern
 // Three: F + F - - F + F + F + F - - F + F - - F + F - - F + F + F + F - - F + F - - F + F - - F + F + F + F - - F + F - - F + F - - F + F + F + F - - F + F - - F + F - - F + F + F + F - - F + F - - F + F - - F + F + F + F - - F + F
 /* Four: F + F - - F + F + F + F - - F + F - - F + F - - F + F + F + F - - F + F + F + F - - F + F + F + F - - F + F - -
  F + F - - F + F + F + F - - F + F  - - F + F - - F + F + F + F - - F + F - - F + F - - F + F + F + F - - F + F
