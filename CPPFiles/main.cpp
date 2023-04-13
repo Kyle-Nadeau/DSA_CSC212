@@ -81,7 +81,7 @@ std::string koch_snowflake(int degree){
 
     for(int i = 0; i < 3; i++){
         commands += snowflake(degree);
-        commands += "+ + ";
+        commands += "- - ";
     }
 
     return commands;
