@@ -1,4 +1,3 @@
-
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -56,7 +55,7 @@ int main(){
                     valid_input = true;
                 }
             }
-            
+
             std::string l_system=  sierpinski_triangle(degree, true);
             l_system +=closing_time(degree);
 
@@ -87,7 +86,23 @@ std::string koch_snowflake(int degree){
 
     return commands;
 }
+//Run plotter with 60 instead of 120
+// one: F - -  F - -  F
+// Two: F + F - - F + F - - F + F - - F + F - - F + F - - F + F
+// Three: F + F - - F + F + F + F - - F + F - - F + F - - F + F + F + F - - F + F - - F + F - - F + F + F + F - - F + F - - F + F - - F + F + F + F - - F + F - - F + F - - F + F + F + F - - F + F - - F + F - - F + F + F + F - - F + F
+/* Four: F + F - - F + F + F + F - - F + F - - F + F - - F + F + F + F - - F + F + F + F - - F + F + F + F - - F + F - -
+ F + F - - F + F + F + F - - F + F  - - F + F - - F + F + F + F - - F + F - - F + F - - F + F + F + F - - F + F
+  + F + F - - F + F + F + F - - F + F - - F + F - - F + F + F + F - - F + F - - F + F - - F + F + F + F - - F + F
+   - - F + F - - F + F + F + F - - F + F + F + F - - F + F + F + F - - F + F - - F + F - - F + F +
+   F + F - - F + F - - F + F - - F + F + F + F - - F + F - - F + F - - F + F + F + F - - F + F +
+    F + F - - F + F + F + F - - F + F - - F + F - - F + F + F + F - - F + F - - F + F - - F + F +
+    F + F - - F + F - - F + F - - F + F + F + F - - F + F + F + F - - F + F + F + F - - F + F - -
+    F + F - - F + F + F + F - - F + F - -F + F - - F + F + F + F - - F + F - - F + F - - F + F +
+    F + F - - F + F + F + F - - F + F + F + F - - F + F - - F + F - - F + F + F + F - - F + F
 
+ * Repeating pattern F + F - - F + F
+ * Repeating pattern repeats in same pattern for four
+ */
 std::string snowflake(int degree) {
     std::string curve;
     if (degree == 0) {
@@ -95,7 +110,7 @@ std::string snowflake(int degree) {
     }
     std::string commands = "";
 
-    // Rotate the curve 60 degrees to the left. 
+    // Rotate the curve 60 degrees to the left.
     curve = snowflake(degree - 60);
     commands += "- ";
     commands += curve;
@@ -113,7 +128,8 @@ std::string snowflake(int degree) {
     // Return the generated commands.
     return commands;
 }
-/*
+/* Run plotter with 120
+ *
  * One iteration should create: F - F - F -
  *
  * Two: F - F + F + F - F - F F - F F
@@ -135,7 +151,6 @@ std::string snowflake(int degree) {
     Two uses pattern, closing formula, closing formula
     Three uses formula for 2 minus 1 closing formula, +, pattern, + half len # of F, -, pattern, closing formula, closing formula
     Four uses  formula for 3 minus closing 1 formula
-
 */
 std::string sierpinski_triangle(int degree, bool type) {
     //base
