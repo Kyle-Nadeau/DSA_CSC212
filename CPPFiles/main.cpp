@@ -27,16 +27,36 @@ int main(){
         }
         else if(input == "1"){
             //Insert Koch Snowflake functions here
+            //of << koch_snowflake(degree);
         }
         else if(input == "2"){
             std::ofstream of("C:\\Users\\amade\\OneDrive\\Desktop\\School\\Programming\\C++\\DSA\\sierpinski.txt");
 
-            std::cout << "Enter the desired degree of triangle you would like displayed" << std::endl;
+            bool valid_input = false;
+            std::string deg;
             int degree;
 
-            std::cin >> degree;
+            while(valid_input == false){
+                std::cout << "Enter the desired degree of triangle you would like displayed" << std::endl;
 
-            //of << koch_snowflake(degree);
+                std::cin >> deg;
+
+                bool check = true;
+
+                for(int i = 0; i < deg.length(); i++){
+                    if(deg[i] != '0' && deg[i] != '1' && deg[i] != '2' && deg[i] != '3' && deg[i] != '4' && deg[i] != '5' && deg[i] != '6' && deg[i] != '7' && deg[i] != '8' && deg[i] != '9'){
+                        check = false;
+                    }
+                }
+                if(check == false || deg.length() > 2){
+                    std::cout << std::endl << "Invalid input, please try again\n" << std::endl;
+                }
+                else{
+                    degree = stoi(deg);
+                    valid_input = true;
+                }
+            }
+            
             std::string l_system=  sierpinski_triangle(degree, true);
             l_system +=closing_time(degree);
 
