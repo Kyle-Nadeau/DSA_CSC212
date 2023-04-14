@@ -3,17 +3,17 @@
 #include <fstream>
 #include <cmath>
 
-std::string koch_snowflake(int degree);
-std::string snowflake(int degree);
-std::string sierpinski_triangle(int degree, bool type1);
-std::string closing_time(int degree);
+std::string koch_snowflake(int order);
+std::string snowflake(int order);
+std::string sierpinski_triangle(int order, bool type1);
+std::string closing_time(int order);
 
 
-int main(){
+int main() {
 
     std::string input = "";
 
-    while(input != "Exit"){
+    while (input != "Exit") {
         std::cout << "Enter the corresponding number to the Recursive Graphic you would like to use:" << std::endl;
         std::cout << "1. Koch Snowflake" << std::endl;
         std::cout << "2. Sierpinski Triangle" << std::endl;
@@ -21,52 +21,52 @@ int main(){
         std::cout << "Type Exit to end program." << std::endl;
         std::cin >> input;
 
-        if(input == "Exit"){
+        if (input == "Exit") {
             break;
         }
-        else if(input == "1"){
+        else if (input == "1") {
             //Insert Koch Snowflake functions here
-            //of << koch_snowflake(degree);
+            //of << koch_snowflake(order);
         }
-        else if(input == "2"){
+        else if (input == "2") {
             std::ofstream of("C:\\Users\\amade\\OneDrive\\Desktop\\School\\Programming\\C++\\DSA\\sierpinski.txt");
 
             bool valid_input = false;
             std::string deg;
-            int degree;
+            int order;
 
-            while(valid_input == false){
-                std::cout << "Enter the desired degree of triangle you would like displayed" << std::endl;
+            while (valid_input == false) {
+                std::cout << "Enter the desired order of triangle you would like displayed" << std::endl;
 
                 std::cin >> deg;
 
                 bool check = true;
 
-                for(int i = 0; i < deg.length(); i++){
-                    if(deg[i] != '0' && deg[i] != '1' && deg[i] != '2' && deg[i] != '3' && deg[i] != '4' && deg[i] != '5' && deg[i] != '6' && deg[i] != '7' && deg[i] != '8' && deg[i] != '9'){
+                for (int i = 0; i < deg.length(); i++) {
+                    if (deg[i] != '0' && deg[i] != '1' && deg[i] != '2' && deg[i] != '3' && deg[i] != '4' && deg[i] != '5' && deg[i] != '6' && deg[i] != '7' && deg[i] != '8' && deg[i] != '9') {
                         check = false;
                     }
                 }
-                if(check == false || deg.length() > 2){
+                if (check == false || deg.length() > 2) {
                     std::cout << std::endl << "Invalid input, please try again\n" << std::endl;
                 }
-                else{
-                    degree = stoi(deg);
+                else {
+                    order = stoi(deg);
                     valid_input = true;
                 }
             }
 
-            std::string l_system=  sierpinski_triangle(degree, true);
-            l_system +=closing_time(degree);
+            std::string l_system = sierpinski_triangle(order, true);
+            l_system += closing_time(order);
 
 
-            of<<l_system;
-            //of<<drawTriangle(degree);
+            of << l_system;
+            //of<<drawTriangle(order);
         }
-        else if (input == "3"){
+        else if (input == "3") {
             //Insert Hilbert Curve functions here
         }
-        else{
+        else {
             std::cout << std::endl << "Invalid input, please try again\n" << std::endl;
         }
     }
@@ -76,12 +76,12 @@ int main(){
     return 0;
 }
 
-std::string koch_snowflake(int degree) {
+std::string koch_snowflake(int iteration) {
     std::string commands = "";
 
     // This handles generating the 3 'sides' of the snowflake.
     for (int i = 0; i < 3; i++) {
-        commands += snowflake(degree);
+        commands += snowflake(iteration);
         commands += "- - ";
 
     }
@@ -107,28 +107,28 @@ std::string koch_snowflake(int degree) {
  * Repeating pattern F + F - - F + F
  * Repeating pattern repeats in same pattern for four
  */
-std::string snowflake(int degree) {
+std::string snowflake(int order) {
     std::string curve;
-    if (degree == 0) {
+    if (order == 0) {
         return "F ";
     }
     else {
 
         std::string commands = "";
 
-        // Generate the repeating pattern for 60 degrees
+        // Generate the repeating pattern for 60 orders
 
-        //Left 60 degrees
-        commands+=snowflake(degree-30);
+        //Left 60 orders
+        commands += snowflake(order - 1);
         commands += "+ ";
-        //Right 120 degrees
-        commands+=snowflake(degree-30);
+        //Right 120 orders
+        commands += snowflake(order - 1);
         commands += "- - ";
-        //Left 60 degrees
-        commands+= snowflake(degree-30);
+        //Left 60 orders
+        commands += snowflake(order - 1);
         commands += "+ ";
         //Going through the function another time
-        commands+= snowflake(degree-30);
+        commands += snowflake(order - 1);
 
         // Return the generated commands.
         return commands;
@@ -158,9 +158,9 @@ std::string snowflake(int degree) {
     Three uses formula for 2 minus 1 closing formula, +, pattern, + half len # of F, -, pattern, closing formula, closing formula
     Four uses  formula for 3 minus closing 1 formula
 */
-std::string sierpinski_triangle(int degree, bool type) {
+std::string sierpinski_triangle(int order, bool type) {
     //base
-    if (degree == 0) {
+    if (order == 0) {
         return "F ";
     }
 
@@ -168,12 +168,12 @@ std::string sierpinski_triangle(int degree, bool type) {
     std::string pattern1;
     std::string pattern2;
     if (type) {
-        pattern1 = sierpinski_triangle(degree-1, true);
-        pattern2 = sierpinski_triangle(degree-1, false);
+        pattern1 = sierpinski_triangle(order - 1, true);
+        pattern2 = sierpinski_triangle(order - 1, false);
         return pattern1 + "- " + pattern2 + "+ " + pattern1 + "+ " + pattern2 + "- " + pattern1;
     }
     else {
-        pattern2 = sierpinski_triangle(degree-1, false);
+        pattern2 = sierpinski_triangle(order - 1, false);
         return pattern2 + pattern2;
     }
 
@@ -181,11 +181,11 @@ std::string sierpinski_triangle(int degree, bool type) {
 
 
 //closing formula, not sure how to include it into recursion so its here instead
-std::string closing_time(int degree){
+std::string closing_time(int order) {
     std::string closing = "";
-    int len = std::pow(2,degree);
-    for(int j=0;j<2;j++) {
-        closing+="- ";
+    int len = std::pow(2, order);
+    for (int j = 0; j < 2; j++) {
+        closing += "- ";
         for (int i = 0; i < len; i++) {
             closing += "F ";
         }
