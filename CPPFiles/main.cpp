@@ -117,30 +117,8 @@ std::string snowflake(int order) {
         return commands;
     }
 }
-/* Run plotter with 120
- *
- * One iteration should create: F - F - F -
- *
- * Two: F - F + F + F - F - F F - F F
- *
- * Three: F - F + F + F - F - F F + F - F + F + F - F + F F - F - F + F + F - F - F F F F - F F F F
- *
- * Four: F - F + F + F - F - F F + F - F + F + F - F + F F - F - F + F + F - F - F F F F + F - F + F + F - F - F F + F - F + F + F - F + F F - F - F + F + F - F + F F F F - F - F + F + F - F - F F + F - F + F + F - F + F F - F - F + F + F - F - F F F F F F F F - F F F F F F F F
-    Found repeating pattern 1: F - F + F + F - F - F F
-    Other repeating pattern 2: F - F + F + F - F + F F
-                            3: F F - F - F + F + F - F Inverse of first pattern
-                            4: F F + F - F + F + F - F Inverse of second pattern
-    Two uses pattern 1,  - , len # of F
-    Three uses pattern 1, +, pattern 2, -, pattern 1, "F F - F F F F" (half of len # of F, -, len # of F)
-    Four uses pattern 1, +, pattern 2, -, pattern 1, pattern 2 inverse, -, pattern 2 inverse, +, pattern 1 inverse,
-    To close triangle:  - len # of F (?)
- bruh
-    Found repeating pattern 1: F - F + F + F - F   (realized removing F F from patterns caused them all to be identical lol)
-    closing formula:  -,  (F len number of times)
-    Two uses pattern, closing formula, closing formula
-    Three uses formula for 2 minus 1 closing formula, +, pattern, + half len # of F, -, pattern, closing formula, closing formula
-    Four uses  formula for 3 minus closing 1 formula
-*/
+// Run plotter with 120
+
 std::string sierpinski_triangle(int order, bool type) {
     //base
     if (order == 0) {
