@@ -11,8 +11,8 @@ std::string closing_time(int order);
 
 int main() {
 
-    std::string input = "";
-
+   std::string input = "";
+    std::ofstream of("C:\\Users\\amade\\OneDrive\\Desktop\\School\\Programming\\C++\\DSA\\sierpinski.txt");
     while (input != "Exit") {
         std::cout << "Enter the corresponding number to the Recursive Graphic you would like to use:" << std::endl;
         std::cout << "1. Koch Snowflake" << std::endl;
@@ -24,56 +24,55 @@ int main() {
         if (input == "Exit") {
             break;
         }
-        else if (input == "1") {
-            //Insert Koch Snowflake functions here
-            //of << koch_snowflake(order);
+        while (input != "1" && input != "2" && input != "3") {
+            std::cout << "Enter 1, 2, or 3:" << std::endl;
+            std::cin >> input;
         }
-        else if (input == "2") {
-            std::ofstream of("C:\\Users\\amade\\OneDrive\\Desktop\\School\\Programming\\C++\\DSA\\sierpinski.txt");
-
-            bool valid_input = false;
-            std::string deg;
-            int order;
-
-            while (valid_input == false) {
-                std::cout << "Enter the desired order of triangle you would like displayed" << std::endl;
-
-                std::cin >> deg;
-
-                bool check = true;
-
-                for (int i = 0; i < deg.length(); i++) {
-                    if (deg[i] != '0' && deg[i] != '1' && deg[i] != '2' && deg[i] != '3' && deg[i] != '4' && deg[i] != '5' && deg[i] != '6' && deg[i] != '7' && deg[i] != '8' && deg[i] != '9') {
-                        check = false;
-                    }
-                }
-                if (check == false || deg.length() > 2) {
-                    std::cout << std::endl << "Invalid input, please try again\n" << std::endl;
-                }
-                else {
-                    order = stoi(deg);
-                    valid_input = true;
-                }
+        if(input=="1"){
+            std::cout<<"Enter degree of magnitude for the Koch Snowflake:"<<std::endl;
+            int degree;
+            std::cin>>degree;
+            while (std::cin.fail() || (degree < 1 || degree > 10)) {
+                std::cout << "Invalid input. Try again." << std::endl;
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                std::cin >> degree;
             }
-
-            std::string l_system = sierpinski_triangle(order, true);
-            l_system += closing_time(order);
-
-
-            of << l_system;
-            //of<<drawTriangle(order);
+            std::string l_system = koch_snowflake(degree);
+            of<<l_system;
         }
-        else if (input == "3") {
-            //Insert Hilbert Curve functions here
+        else if(input=="2"){
+            std::cout<<"Enter degree of magnitude for the Sierpinski Triangle:"<<std::endl;
+            int degree;
+            std::cin>>degree;
+            while (std::cin.fail() || (degree < 1 || degree > 7)) {
+                std::cout << "Invalid input. Try again." << std::endl;
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                std::cin >> degree;
+            }
+            std::string l_system = sierpinski_triangle(degree, true);
+            l_system+=closing_time(degree);
+            of<<l_system;
         }
-        else {
-            std::cout << std::endl << "Invalid input, please try again\n" << std::endl;
+
+        else{
+            std::cout<<"Enter degree of magnitude for the Hilbert Curve:"<<std::endl;
+            int degree;
+            std::cin>>degree;
+            while (std::cin.fail() || (degree < 1 || degree > 7)) {
+                std::cout << "Invalid input. Try again." << std::endl;
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                std::cin >> degree;
+            }
+            //std::string l_system = sierpinski_triangle(degree, true);
+            //l_system+=closing_time(degree);
+            //
+            // of<<l_system;
         }
     }
-
     std::cout << "Thank you for using our program" << std::endl;
-
-    return 0;
 }
 
 std::string koch_snowflake(int iteration) {
