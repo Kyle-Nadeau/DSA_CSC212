@@ -171,28 +171,36 @@ std::string hilbert(int order, bool sign, std::string & str) {
 
     //base case |``|
     if(order == 1 && sign){
-       str += "F + F + F";
+       str += "F + F + F ";
     }
     //base case ]
     else if(order == 1 && !sign){
-        str += "F - F - F";
+        str += "F - F - F ";
     }
 
     if(order > 1 && sign){
         hilbert(order - 1, sign, str);
+        str += "- F ";
         hilbert(order - 1, !sign, str);
+        str += "+ F + ";
         hilbert(order - 1, !sign, str);
+        str += "F - ";
         hilbert(order - 1, sign, str);
 
     }
     else if(order > 1 && !sign){
-        hilbert(order - 1, !sign, str);
         hilbert(order - 1, sign, str);
-        hilbert(order - 1, sign, str);
+        str += "+ F ";
         hilbert(order - 1, !sign, str);
+        str += "- F - ";
+        hilbert(order - 1, !sign, str);
+        str += "F + ";
+        hilbert(order - 1, sign, str);
 
     }
     return str;
 }
+
+
 
 
