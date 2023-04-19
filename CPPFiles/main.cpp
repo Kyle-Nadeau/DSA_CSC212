@@ -2,17 +2,19 @@
 #include <iostream>
 #include <fstream>
 #include <cmath>
+#include <limits>
 
-std::string koch_snowflake(int order);
+std::string koch_snowflake(int iteration);
 std::string snowflake(int order);
 std::string sierpinski_triangle(int order, bool type1);
 std::string closing_time(int order);
+std::string hilbert(int order, int sign);
 
 
 int main() {
 
-   std::string input = "";
-    std::ofstream of("C:\\Users\\amade\\OneDrive\\Desktop\\School\\Programming\\C++\\DSA\\sierpinski.txt");
+    std::string input = "";
+    std::ofstream of("file");
     while (input != "Exit") {
         std::cout << "Enter the corresponding number to the Recursive Graphic you would like to use:" << std::endl;
         std::cout << "1. Koch Snowflake" << std::endl;
@@ -66,10 +68,8 @@ int main() {
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 std::cin >> degree;
             }
-            //std::string l_system = sierpinski_triangle(degree, true);
-            //l_system+=closing_time(degree);
-            //
-            // of<<l_system;
+            std::string hil_string = hilbert(degree, 1);
+            of<<hil_string;
         }
     }
     std::cout << "Thank you for using our program" << std::endl;
@@ -152,3 +152,43 @@ std::string closing_time(int order) {
     }
     return closing;
 }
+std::string hilbert(int order, int sign) {
+    if (order == 0) {
+        return "F";
+    } else {
+        std::string sub = hilbert(order - 1,  -sign);
+        std::string result = "";
+        if (sign == 1) {
+            result += "+";
+        } else {
+            result += "-";
+        }
+        result += sub;
+        result += "F";
+        if (sign == 1) {
+            result += " ";
+        } else {
+            result += "-";
+        }
+        result += sub;
+        if (sign == 1) {
+            result += "-";
+        } else {
+            result += "+";
+        }
+        result += "F";
+        result += sub;
+        if (sign == 1) {
+            result += " ";
+        } else {
+            result += "+";
+        }
+        if (sign == 1) {
+            result += "-";
+        } else {
+            result += " ";
+        }
+        return result;
+    }
+}
+
