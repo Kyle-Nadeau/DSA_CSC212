@@ -9,6 +9,7 @@ std::string snowflake(int order);
 std::string sierpinski_triangle(int order, bool type1);
 std::string closing_time(int order);
 std::string hilbert(bool pattern, int order);
+std::string dragon(int order, bool type);
 
 
 int main() {
@@ -20,6 +21,7 @@ int main() {
         std::cout << "1. Koch Snowflake" << std::endl;
         std::cout << "2. Sierpinski Triangle" << std::endl;
         std::cout << "3. Hilbert Curve" << std::endl;
+        std::cout << "4. Dragon Curve" <<std::endl;
         std::cout << "Type Exit to end program." << std::endl;
         std::cin >> input;
 
@@ -58,7 +60,7 @@ int main() {
             of<<l_system;
         }
 
-        else{
+        else if (input=="3"){
             std::cout<<"Enter degree of magnitude for the Hilbert Curve:"<<std::endl;
             int degree;
             std::cin>>degree;
@@ -71,6 +73,18 @@ int main() {
             std::string hil_string = hilbert(1, degree);
             of<<hil_string;
         }
+        else if(input=="4"){
+            std::cout<<"Enter degree of magnitude for the Dragon Curve:"<<std::endl;
+            int degree;
+            std::cin>>degree;
+            while (std::cin.fail() || (degree < 1 || degree > 7)) {
+                std::cout << "Invalid input. Try again." << std::endl;
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                std::cin >> degree;
+            }
+            std::string output = dragon(degree, true);
+            of<<output;
     }
     std::cout << "Thank you for using our program" << std::endl;
 }
@@ -181,5 +195,22 @@ std::string hilbert(bool pattern, int order) {
         pattern1 = hilbert(true, order - 1);
         pattern2 = hilbert(false, order - 1);
         return "- "+ pattern1 + "F + " + pattern2 + "F " + pattern2 + "+ F " + pattern1+"- ";
+    }
+}
+
+std::string dragon(int order, bool type){
+    if(order==0) return "";
+    std::string pattern1;
+    std::string pattern2;
+
+    if(type){
+        pattern1=dragon(order-1,true);
+        pattern2=dragon(order-1, false);
+        return pattern1+"+"+pattern2+"F + ";
+    }
+    else{
+        pattern1=dragon(order-1, true);
+        pattern2=dragon(order-1,false);
+        return "- F "+pattern1+"-"+pattern2;
     }
 }
