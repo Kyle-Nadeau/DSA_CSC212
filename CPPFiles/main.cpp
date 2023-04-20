@@ -114,7 +114,7 @@ int main() {
         } else if (input == "3"){
             std::cout << "Run the plotter with 90 degrees" << std::endl;
         } else if (input == "4"){
-            std::cout << "Run the plotter with 60 degrees" << std::endl;
+            std::cout << "Run the plotter with 90 degrees" << std::endl;
         } else if (input == "5"){
             std::cout << "Run the plotter with 60 degrees" << std::endl;
         } else if (input == "6"){
