@@ -1,0 +1,2 @@
+l-system info and formulas: https://www.robertdickau.com/lsys2d.html
+
