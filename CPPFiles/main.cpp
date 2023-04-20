@@ -11,6 +11,7 @@ std::string closing_time(int order);
 std::string hilbert(bool pattern, int order);
 std::string dragon(int order, bool type);
 std::string peano_gosper(int order, bool type);
+std::string hilbert_curve2(int order, bool type);
 
 
 int main() {
@@ -258,5 +259,24 @@ int main() {
             pattern1 = peano_gosper(order-1,true);
             pattern2 = peano_gosper(order-1,false);
             return "-F"+pattern1+"+"+pattern2+"F"+pattern2+"F++"+pattern2+"F+F"+pattern1+"--F"+pattern1+"-"+pattern2;
+    }
+}
+
+//90 degree plotter
+//X -> XFYFX+F+YFXFY-F-XFYFX, Y -> YFXFY-F-XFYFX+F+YFXFY):
+std::string hilbert_curve2(int order, bool type){
+    if(order==0) return "";
+
+    std::string pattern1;
+    std::string pattern2;
+    if(type){
+        pattern1=hilbert_curve2(order-1, true);
+        pattern2=hilbert_curve2(order-1, false);
+        return pattern1+"F"+pattern2+"F"+pattern1+"+F+"+pattern2+"F"+pattern1+"F"+pattern2+"-F-"+pattern1+"F"+pattern2+"F"+pattern1;
+    }
+    else{
+        pattern1=hilbert_curve2(order-1, true);
+        pattern2=hilbert_curve2(order-1, false);
+        return pattern2+"F"+pattern1+"F"+pattern2+"-F-"+pattern1+"F"+pattern2+"F"+pattern1+"+F+"+pattern2+"F"+pattern1+"F"+pattern2;
     }
 }
