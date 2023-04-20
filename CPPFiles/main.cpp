@@ -16,7 +16,6 @@ std::string hilbert_curve2(int order, bool type);
 
 int main() {
     
-    int choice;
     std::string input = "";
     std::ofstream of("output.txt");
     
@@ -26,10 +25,11 @@ int main() {
     std::cout << "3. Hilbert Curve" << std::endl;
     std::cout << "4. Dragon Curve" << std::endl;
     std::cout << "5. Peano Gosper" << std::endl;
+    std::cout << "6. Hilbert Curve II" << std::endl;
     std::cin >> input;
 
-    while (input != "1" && input != "2" && input != "3" && input != "4" && input != "5") {
-        std::cout << "Enter 1, 2, 3, 4, or 5:" << std::endl;
+    while (input != "1" && input != "2" && input != "3" && input != "4" && input != "5" && input != "6") {
+        std::cout << "Enter 1, 2, 3, 4, 5, or 6:" << std::endl;
         std::cin >> input;
     }
         if (input == "1") {
@@ -42,7 +42,6 @@ int main() {
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 std::cin >> degree;
             }
-            choice = 1;
             std::string l_system = koch_snowflake(degree);
             of << l_system;
         } else if (input == "2") {
@@ -55,7 +54,6 @@ int main() {
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 std::cin >> degree;
             }
-            choice = 2;
             std::string l_system = sierpinski_triangle(degree, true);
             l_system += closing_time(degree);
             of << l_system;
@@ -69,7 +67,6 @@ int main() {
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 std::cin >> degree;
             }
-            choice = 3;
             std::string hil_string = hilbert(1, degree);
             of << hil_string;
         } else if (input == "4") {
@@ -82,7 +79,6 @@ int main() {
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 std::cin >> degree;
             }
-            choice = 4;
             std::string output = dragon(degree, true);
             of << output;
         } else if (input == "5") {
@@ -95,21 +91,34 @@ int main() {
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 std::cin >> degree;
             }
-            choice = 5;
             std::string output = peano_gosper(degree, true);
+            of << output;
+        } else if (input == "6") {
+            std::cout << "Enter degree of magnitude for the Hilbert Curve II:" << std::endl;
+            int degree;
+            std::cin >> degree;
+            while (std::cin.fail() || (degree < 10 || degree > 20)) {
+                std::cout << "Invalid input. Try again." << std::endl;
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                std::cin >> degree;
+            }
+            std::string output = hilbert_curve2(degree, true);
             of << output;
         }
         
-        if (choice == 1){
+        if (input == "1"){
             std::cout << "Run the plotter with 60 degrees" << std::endl;
-        } else if (choice == 2){
+        } else if (input == "2"){
             std::cout << "Run the plotter with 120 degrees" << std::endl;
-        } else if (choice == 3){
+        } else if (input == "3"){
             std::cout << "Run the plotter with 90 degrees" << std::endl;
-        } else if (choice == 4){
+        } else if (input == "4"){
             std::cout << "Run the plotter with 60 degrees" << std::endl;
-        } else if (choice == 5){
+        } else if (input == "5"){
             std::cout << "Run the plotter with 60 degrees" << std::endl;
+        } else if (input == "6"){
+            std::cout << "Run the plotter with 90 degrees" << std::endl;
         }
         
         std::cout << "Thank you for using our program" << std::endl;
