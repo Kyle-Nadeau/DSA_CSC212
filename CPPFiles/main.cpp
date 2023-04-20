@@ -346,3 +346,31 @@ std::string hilbert(int order, int sign) {
     }
 }
 
+//90 degrees
+//First order: F - F - F
+// Second: - F + F + F - F F - F - F + F + F - F - F F - F + F + F
+//           F - F - F + F F + F + F - F - F + F + F F + F - F - F
+// F - F - F + F
+// F + F + F - F
+//Inverse, Regular, Regular, inverse
+// Third: F - F - F + F F + F + F - F - F + F + F F + F - F - F F - F + F + F - F F - F - F + F + F - F - F F - F + F + F F F + F + F - F F - F - F + F + F - F - F F - F + F + F - F F - F - F + F F + F + F - F - F + F + F F + F - F - F
+  //     1            1 2      1      2                        F -
+  //     L -> +RF-LFL-FR+, R -> -LF+RFR+FL-                                                       - F
+std::string hilbert(bool pattern, int order) {
+    // base case
+    if (order == 0) {
+        return "";
+    }
+    // call the recursive method based on the boolean flag
+    std::string pattern1;
+    std::string pattern2;
+    if (pattern) {
+        pattern1 = hilbert(true, order - 1);
+        pattern2 = hilbert(false, order - 1);
+        return "+ "+pattern2 + "F - " + pattern1 + "F " + pattern1 + "- F " + pattern2+"+ ";
+    } else {
+        pattern1 = hilbert(true, order - 1);
+        pattern2 = hilbert(false, order - 1);
+        return "- "+ pattern1 + "F + " + pattern2 + "F " + pattern2 + "+ F " + pattern1+"- ";
+    }
+}
