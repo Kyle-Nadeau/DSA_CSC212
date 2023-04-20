@@ -80,10 +80,21 @@ int main() {
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 std::cin >> degree;
             }
-            std::string output = dragon(degree, true);
+          else if (input == "5") {
+            std::cout << "Enter degree of magnitude for the Peano Gosper:" << std::endl;
+            int degree;
+            std::cin >> degree;
+            while (std::cin.fail() || (degree < 10 || degree > 20)) {
+                std::cout << "Invalid input. Try again." << std::endl;
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                std::cin >> degree;
+            }
+            std::string output = peano_gosper(degree, true);
             of << output;
         }
         std::cout << "Thank you for using our program" << std::endl;
+        
     }
 }
     std::string koch_snowflake(int iteration) {
