@@ -5,3 +5,11 @@ Stephen Brown<br>
 Alex Bergeron<br>
 Zach Alba<br>
 Kyle Nadeau
+
+Custom Algorithm:
+Schraders :
+Structure
+Segment
+Spiral
+Scale
+Script
