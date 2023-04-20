@@ -1,1 +1,0 @@
-We initially are getting the functions working then designing classes or a GUI that will function as such so that the user may choose what program they want to run and it will generate the graphics of their choosing, with other modifyable inputs.
