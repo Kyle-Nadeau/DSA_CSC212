@@ -6,4 +6,4 @@ Alex Bergeron<br>
 Zach Alba<br>
 Kyle Nadeau
 
-Welcome to our Repository, find the C++ script with 'CppFiles' and our two Python scripts below!
+Welcome to our Repository, find the C++ script with 'CPPFiles' and our two Python scripts below!
