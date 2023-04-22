@@ -6,10 +6,4 @@ Alex Bergeron<br>
 Zach Alba<br>
 Kyle Nadeau
 
-Custom Algorithm:
-Schraders :
-Structure
-Segment
-Spiral
-Scale
-Script
+Welcome to our Repository, find the C++ script with 'CppFiles' and our two Python scripts below!
