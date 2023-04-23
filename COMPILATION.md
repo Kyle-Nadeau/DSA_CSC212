@@ -25,9 +25,9 @@ If you are using G++:
     
  This will result in an output file named "file" within the same directory as the main.cpp file.
  
- For the python file use: 
+ For the python file navigate to the local file using a terminal and use: 
  
-     g++ python3 plotter.py file.txt image.png <degree for turns>
+     python3 plotter.py file.txt image.png <degree for turns>
   
    
 
@@ -42,4 +42,4 @@ This will result in an output file named "file" within the same directory as the
 For the python file, it will not function using gcc, however you can use the terminal to enter:
   
   
-    python plotter.py file.txt image.png <degrees>
+    python3 plotter.py file.txt image.png <degrees>
