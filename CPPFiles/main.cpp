@@ -35,6 +35,7 @@ int main() {
         std::cout << "Enter 1, 2, 3, 4, 5, 6, or 7:" << std::endl;
         std::cin >> input;
     }
+    // Runs Koch Snowflake if user enters 1
     if (input == "1") {
         std::cout << "Enter a degree of magnitude that is any integer from 0 to 10 for the Koch Snowflake:" << std::endl;
         int degree;
@@ -47,7 +48,9 @@ int main() {
         }
         std::string l_system = koch_snowflake(degree);
         of << l_system;
-    } else if (input == "2") {
+    }
+    // Runs Sierpinski Triangle if user enters 2
+    else if (input == "2") {
         std::cout << "Enter a degree of magnitude that is any integer from 1 to 7 for the Sierpinski Triangle:" << std::endl;
         int degree;
         std::cin >> degree;
@@ -60,7 +63,9 @@ int main() {
         std::string l_system = sierpinski_triangle(degree, true);
         l_system += closing_time(degree);
         of << l_system;
-    } else if (input == "3") {
+    } 
+    // Runs Hilbert Curve if user enters 3
+    else if (input == "3") {
         std::cout << "Enter a degree of magnitude that is any integer from 1 to 7 for the Hilbert Curve:" << std::endl;
         int degree;
         std::cin >> degree;
@@ -72,7 +77,9 @@ int main() {
         }
         std::string hil_string = hilbert(1, degree);
         of << hil_string;
-    } else if (input == "4") {
+    }
+    // Runs Dragon Curve if user enters 4
+    else if (input == "4") {
         std::cout << "Enter a degree of magnitude that is any integer from 10 to 20 for the Dragon Curve:" << std::endl;
         int degree;
         std::cin >> degree;
@@ -84,7 +91,9 @@ int main() {
         }
         std::string output = dragon(degree, true);
         of << output;
-    } else if (input == "5") {
+    } 
+    // Runs Peano Gosper if user enters 5
+    else if (input == "5") {
         std::cout << "Enter a degree of magnitude that is any integer from 0 to 10 for the Peano Gosper:" << std::endl;
         int degree;
         std::cin >> degree;
@@ -96,7 +105,9 @@ int main() {
         }
         std::string output = peano_gosper(degree, true);
         of << output;
-    } else if (input == "6") {
+    } 
+    // Runs Hilbert Curve II if user enters 6
+    else if (input == "6") {
         std::cout << "Enter a degree of magnitude that is any intenger from 0 to 6 for the Hilbert Curve II:" << std::endl;
         int degree;
         std::cin >> degree;
@@ -109,6 +120,7 @@ int main() {
         std::string output = hilbert_curve2(degree, true);
         of << output;
     }
+    // Runs Square Curve if user enters 7
     else if (input == "7") {
         std::cout << "Enter a degree of magnitude that is any integer from 4 to 8 for the Square curve:" << std::endl;
         int degree;
@@ -123,7 +135,7 @@ int main() {
         of << output;
     }
 
-
+    // Tells the user what degree to enter when using the plotter based off their chosen graphic
     if (input == "1"){
         std::cout << "Run the plotter with 60 degrees" << std::endl;
     } else if (input == "2"){
@@ -185,8 +197,8 @@ std::string snowflake(int order) {
         return commands;
     }
 }
-// Run plotter with 120
 
+// Run plotter with 120
 std::string sierpinski_triangle(int order, bool type) {
     //base
     if (order == 0) {
@@ -254,11 +266,11 @@ std::string hilbert(bool pattern, int order) {
 }
 
 std::string dragon(int order, bool type){
-    if(order==0) return "";
+    if (order == 0) return "";
     std::string pattern1;
     std::string pattern2;
 
-    if(type){
+    if (type){
         pattern1=dragon(order-1,true);
         pattern2=dragon(order-1, false);
         return pattern1+"+"+pattern2+"F + ";
@@ -280,32 +292,31 @@ std::string peano_gosper(int order, bool type) {
     if (type) {
         pattern1 = peano_gosper(order - 1, true);
         pattern2 = peano_gosper(order - 1, false);
-        return pattern1 + "+" + pattern2 + "F++" + pattern2 + "F-F" + pattern1 + "--F" + pattern1 + "F" + pattern1 +
-               "-" + pattern2 + "F+";
+        return pattern1 + "+" + pattern2 + "F++" + pattern2 + "F-F" + pattern1 + "--F" + pattern1 + "F" + pattern1 + "-" + pattern2 + "F+";
     }
     else{
-        pattern1 = peano_gosper(order-1,true);
-        pattern2 = peano_gosper(order-1,false);
-        return "-F"+pattern1+"+"+pattern2+"F"+pattern2+"F++"+pattern2+"F+F"+pattern1+"--F"+pattern1+"-"+pattern2;
+        pattern1 = peano_gosper(order - 1, true);
+        pattern2 = peano_gosper(order - 1, false);
+        return "-F" + pattern1 + "+" + pattern2 + "F" + pattern2 + "F++" + pattern2 + "F+F" + pattern1 + "--F" + pattern1 + "-" + pattern2;
     }
 }
 
 //90 degree plotter
 //X -> XFYFX+F+YFXFY-F-XFYFX, Y -> YFXFY-F-XFYFX+F+YFXFY):
 std::string hilbert_curve2(int order, bool type){
-    if(order==0) return "";
+    if (order == 0) return "";
 
     std::string pattern1;
     std::string pattern2;
-    if(type){
-        pattern1=hilbert_curve2(order-1, true);
-        pattern2=hilbert_curve2(order-1, false);
-        return pattern1+"F"+pattern2+"F"+pattern1+"+F+"+pattern2+"F"+pattern1+"F"+pattern2+"-F-"+pattern1+"F"+pattern2+"F"+pattern1;
+    if (type){
+        pattern1 = hilbert_curve2(order - 1, true);
+        pattern2 = hilbert_curve2(order - 1, false);
+        return pattern1 + "F" + pattern2 + "F" + pattern1 + "+F+" + pattern2 + "F" + pattern1 + "F" + pattern2 + "-F-" + pattern1 + "F" + pattern2 + "F" + pattern1;
     }
     else{
-        pattern1=hilbert_curve2(order-1, true);
-        pattern2=hilbert_curve2(order-1, false);
-        return pattern2+"F"+pattern1+"F"+pattern2+"-F-"+pattern1+"F"+pattern2+"F"+pattern1+"+F+"+pattern2+"F"+pattern1+"F"+pattern2;
+        pattern1 = hilbert_curve2(order - 1, true);
+        pattern2 = hilbert_curve2(order - 1, false);
+        return pattern2 + "F" + pattern1 + "F" + pattern2 + "-F-" + pattern1 + "F" + pattern2 + "F" + pattern1 + "+F+" + pattern2 + "F" + pattern1 + "F" + pattern2;
     }
 }
 //X -> XF-F+F-XF+F+XF-F+F-X
@@ -314,8 +325,7 @@ std::string square(int order) {
     if (order == 0) {
         return "";
     }
-    else
-    {
+    else{
         pattern1 = square(order -1);
         return pattern1 + "F-F+F-" + pattern1 + "F+F+" + pattern1 + "F-F+F-" + pattern1;
     }
