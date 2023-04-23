@@ -39,7 +39,7 @@ If you are using GCC:
 This will result in an output file named "file" within the same directory as the main.cpp file.
   
   
-For the Python File, it will not function using gcc, however if you navigate to the file destination in a terminal, enter:
+For the python file, it will not function using gcc, however you can use the terminal to enter:
   
   
     python plotter.py file.txt image.png <degrees>
