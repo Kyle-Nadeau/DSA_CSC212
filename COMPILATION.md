@@ -27,13 +27,19 @@ If you are using G++:
  
  For the python file use: 
  
- g++ python3 plotter.py file.txt image.png <degree for turns> 
-  
+   g++ python3 plotter.py file.txt image.png <degree for turns>
   
    
 
 If you are using GCC:
   For the main.cpp, simply open your gcc compiler and use:
   
-  gcc main.cpp 
-
+  gcc main.cpp -o main
+  
+This will result in an output file named "file" within the same directory as the main.cpp file.
+  
+  
+For the Python File, it will not function using gcc, however if you navigate to the file destination in a terminal, enter:
+  
+  
+python plotter.py file.txt image.png <degrees>
