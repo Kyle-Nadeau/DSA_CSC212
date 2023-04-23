@@ -3,7 +3,7 @@ This repository holds all information and structural code for our DSA project fo
 Members:<br>
 Stephen Brown<br>
 Alex Bergeron<br>
-Zach Alba<br>
+Zach Albanese<br>
 Kyle Nadeau
 
 Welcome to our Repository, find the C++ script with 'CPPFiles' and our two Python scripts below!
