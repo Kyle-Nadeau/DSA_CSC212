@@ -13,7 +13,6 @@ std::string dragon(int order, bool type);
 std::string peano_gosper(int order, bool type);
 std::string hilbert_curve2(int order, bool type);
 std::string square(int order);
-std::string thirty(int order);
 
 int main() {
 
@@ -37,11 +36,11 @@ int main() {
         std::cin >> input;
     }
     if (input == "1") {
-        std::cout << "Enter degree of magnitude for the Koch Snowflake:" << std::endl;
+        std::cout << "Enter a degree of magnitude that is any integer from 0 to 10 for the Koch Snowflake:" << std::endl;
         int degree;
         std::cin >> degree;
-        while (std::cin.fail() || (degree < 1 || degree > 10)) {
-            std::cout << "Invalid input. Try again." << std::endl;
+        while (std::cin.fail() || (degree < 0 || degree > 10)) {
+            std::cout << "Invalid input. The magnitude should be an integer that is in the range of 0 to 10. Try again." << std::endl;
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::cin >> degree;
@@ -49,11 +48,11 @@ int main() {
         std::string l_system = koch_snowflake(degree);
         of << l_system;
     } else if (input == "2") {
-        std::cout << "Enter degree of magnitude for the Sierpinski Triangle:" << std::endl;
+        std::cout << "Enter a degree of magnitude that is any integer from 1 to 7 for the Sierpinski Triangle:" << std::endl;
         int degree;
         std::cin >> degree;
         while (std::cin.fail() || (degree < 1 || degree > 7)) {
-            std::cout << "Invalid input. Try again." << std::endl;
+            std::cout << "Invalid input. The magnitude should be an integer that is in the range of 1 to 7. Try again." << std::endl;
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::cin >> degree;
@@ -62,11 +61,11 @@ int main() {
         l_system += closing_time(degree);
         of << l_system;
     } else if (input == "3") {
-        std::cout << "Enter degree of magnitude for the Hilbert Curve:" << std::endl;
+        std::cout << "Enter a degree of magnitude that is any integer from 1 to 7 for the Hilbert Curve:" << std::endl;
         int degree;
         std::cin >> degree;
         while (std::cin.fail() || (degree < 1 || degree > 7)) {
-            std::cout << "Invalid input. Try again." << std::endl;
+            std::cout << "Invalid input. The magnitude should be an integer that is in the range of 1 to 7. Try again." << std::endl;
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::cin >> degree;
@@ -74,11 +73,11 @@ int main() {
         std::string hil_string = hilbert(1, degree);
         of << hil_string;
     } else if (input == "4") {
-        std::cout << "Enter degree of magnitude for the Dragon Curve:" << std::endl;
+        std::cout << "Enter a degree of magnitude that is any integer from 10 to 20 for the Dragon Curve:" << std::endl;
         int degree;
         std::cin >> degree;
         while (std::cin.fail() || (degree < 10 || degree > 20)) {
-            std::cout << "Invalid input. Try again." << std::endl;
+            std::cout << "Invalid input. The magnitude should be an integer is in the range of 10 to 20. Try again." << std::endl;
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::cin >> degree;
@@ -86,11 +85,11 @@ int main() {
         std::string output = dragon(degree, true);
         of << output;
     } else if (input == "5") {
-        std::cout << "Enter degree of magnitude for the Peano Gosper:" << std::endl;
+        std::cout << "Enter a degree of magnitude that is any integer from 0 to 10 for the Peano Gosper:" << std::endl;
         int degree;
         std::cin >> degree;
         while (std::cin.fail() || (degree < 0 || degree > 10)) {
-            std::cout << "Invalid input. Try again." << std::endl;
+            std::cout << "Invalid input. The magnitude should be an integer that is in the range of 0 to 10. Try again." << std::endl;
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::cin >> degree;
@@ -98,11 +97,11 @@ int main() {
         std::string output = peano_gosper(degree, true);
         of << output;
     } else if (input == "6") {
-        std::cout << "Enter degree of magnitude for the Hilbert Curve II:" << std::endl;
+        std::cout << "Enter a degree of magnitude that is any intenger from 0 to 6 for the Hilbert Curve II:" << std::endl;
         int degree;
         std::cin >> degree;
         while (std::cin.fail() || (degree < 0 || degree > 6)) {
-            std::cout << "Invalid input. Try again." << std::endl;
+            std::cout << "Invalid input. The magnitude should be an integer that is in the range of 0 to 6. Try again." << std::endl;
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::cin >> degree;
@@ -111,11 +110,11 @@ int main() {
         of << output;
     }
     else if (input == "7") {
-        std::cout << "Enter degree of magnitude for the Square curve:" << std::endl;
+        std::cout << "Enter a degree of magnitude that is any integer from 4 to 8 for the Square curve:" << std::endl;
         int degree;
         std::cin >> degree;
         while (std::cin.fail() || (degree < 4 || degree > 8)) {
-            std::cout << "Invalid input. Try again." << std::endl;
+            std::cout << "Invalid input. The magnitude should be an integer that is in the range of 4 to 8. Try again." << std::endl;
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::cin >> degree;
@@ -168,15 +167,15 @@ std::string snowflake(int order) {
 
         std::string commands = "";
 
-        // Generate the repeating pattern for 60 orders
+        // Generate the repeating pattern for the current side(which should be the iteration of the loop in the koch_snowflake function)
 
-        //Left 60 orders
+        //Left 60 degrees
         commands += snowflake(order - 1);
         commands += "+ ";
-        //Right 120 orders
+        //Right 120 degrees
         commands += snowflake(order - 1);
         commands += "- - ";
-        //Left 60 orders
+        //Left 60 degrees
         commands += snowflake(order - 1);
         commands += "+ ";
         //Going through the function another time
