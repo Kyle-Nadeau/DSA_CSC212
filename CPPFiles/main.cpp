@@ -89,7 +89,7 @@ int main() {
         std::cout << "Enter degree of magnitude for the Peano Gosper:" << std::endl;
         int degree;
         std::cin >> degree;
-        while (std::cin.fail() || (degree < 10 || degree > 20)) {
+        while (std::cin.fail() || (degree < 0 || degree > 10)) {
             std::cout << "Invalid input. Try again." << std::endl;
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
