@@ -20,15 +20,14 @@ int main() {
     std::ofstream of("file");
 
     std::cout << "Enter the corresponding number to the Recursive Graphic you would like to use:" << std::endl;
-    std::cout << "1. Koch Snowflake" << std::endl;
+    std::cout << "1. Koch Snowflake"      << std::endl;
     std::cout << "2. Sierpinski Triangle" << std::endl;
-    std::cout << "3. Hilbert Curve" << std::endl;
-    std::cout << "4. Dragon Curve" << std::endl;
-    std::cout << "5. Peano Gosper" << std::endl;
-    std::cout << "6. Hilbert Curve II" << std::endl;
-    std::cout << "7. Square Curve"<<std::endl;
+    std::cout << "3. Hilbert Curve"       << std::endl;
+    std::cout << "4. Dragon Curve"        << std::endl;
+    std::cout << "5. Peano Gosper"        << std::endl;
+    std::cout << "6. Hilbert Curve II"    << std::endl;
+    std::cout << "7. Square Curve"        << std::endl;
 
-//    std::cout << "Type 'Exit' to Exit the Program."<<std::endl;
     std::cin >> input;
 
     while (input != "1" && input != "2" && input != "3" && input != "4" && input != "5" && input != "6" && input != "7") {
@@ -131,7 +130,7 @@ int main() {
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::cin >> degree;
         }
-        std::string output =square(degree);
+        std::string output = square(degree);
         of << output;
     }
 
@@ -233,7 +232,7 @@ std::string closing_time(int order) {
     }
     return closing;
 }
-//
+
 
 
 //90 degrees
@@ -271,14 +270,14 @@ std::string dragon(int order, bool type){
     std::string pattern2;
 
     if (type){
-        pattern1=dragon(order-1,true);
-        pattern2=dragon(order-1, false);
-        return pattern1+"+"+pattern2+"F + ";
+        pattern1 = dragon(order - 1, true);
+        pattern2 = dragon(order - 1, false);
+        return pattern1 + "+" + pattern2 + "F + ";
     }
     else{
-        pattern1=dragon(order-1, true);
-        pattern2=dragon(order-1,false);
-        return "- F "+pattern1+"-"+pattern2;
+        pattern1 = dragon(order - 1, true);
+        pattern2 = dragon(order - 1,false);
+        return "- F " + pattern1 + "-" + pattern2;
     }
 }
 //60 degree plotter
