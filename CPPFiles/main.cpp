@@ -101,7 +101,7 @@ int main() {
         std::cout << "Enter degree of magnitude for the Hilbert Curve II:" << std::endl;
         int degree;
         std::cin >> degree;
-        while (std::cin.fail() || (degree < 4 || degree > 14)) {
+        while (std::cin.fail() || (degree < 0 || degree > 6)) {
             std::cout << "Invalid input. Try again." << std::endl;
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
