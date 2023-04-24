@@ -166,7 +166,7 @@ int main() {
     } else if (input == "7"){
         std::cout << "Run the plotter with 90 degrees" << std::endl;
     } else if (input == "8"){
-        std::cout << "Run the plotter with 90 degrees" << std::endl;
+        std::cout << "Run the plotter with 60 degrees" << std::endl;
     }
 
     std::cout << "Thank you for using our program" << std::endl;
