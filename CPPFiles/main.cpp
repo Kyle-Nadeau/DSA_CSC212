@@ -13,6 +13,7 @@ std::string dragon(int order, bool type);
 std::string peano_gosper(int order, bool type);
 std::string hilbert_curve2(int order, bool type);
 std::string square(int order);
+std::string schrad( int order);
 
 int main() {
 
@@ -27,10 +28,11 @@ int main() {
     std::cout << "5. Peano Gosper"        << std::endl;
     std::cout << "6. Hilbert Curve II"    << std::endl;
     std::cout << "7. Square Curve"        << std::endl;
+    std::cout << "8. Schraders Structure" << std::endl;
 
     std::cin >> input;
 
-    while (input != "1" && input != "2" && input != "3" && input != "4" && input != "5" && input != "6" && input != "7") {
+    while (input != "1" && input != "2" && input != "3" && input != "4" && input != "5" && input != "6" && input != "7" && input != "8") {
         std::cout << "Enter 1, 2, 3, 4, 5, 6, or 7:" << std::endl;
         std::cin >> input;
     }
@@ -133,6 +135,20 @@ int main() {
         std::string output = square(degree);
         of << output;
     }
+    // Runs Schraders Struct if user enters 8
+    else if (input == "8") {
+        std::cout << "Enter a degree of magnitude that is any integer from 1 to 8 for the Schraders Structure:" << std::endl;
+        int degree;
+        std::cin >> degree;
+        while (std::cin.fail() || (degree < 4 || degree > 8)) {
+            std::cout << "Invalid input. The magnitude should be an integer that is in the range of 1 to 8. Try again." << std::endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cin >> degree;
+        }
+        std::string output = schrad(degree);
+        of << output;
+    }
 
     // Tells the user what degree to enter when using the plotter based off their chosen graphic
     if (input == "1"){
@@ -148,6 +164,8 @@ int main() {
     } else if (input == "6"){
         std::cout << "Run the plotter with 90 degrees" << std::endl;
     } else if (input == "7"){
+        std::cout << "Run the plotter with 90 degrees" << std::endl;
+    } else if (input == "8"){
         std::cout << "Run the plotter with 90 degrees" << std::endl;
     }
 
@@ -319,6 +337,7 @@ std::string hilbert_curve2(int order, bool type){
     }
 }
 //X -> XF-F+F-XF+F+XF-F+F-X
+//90 Degree Plotter
 std::string square(int order) {
     std::string pattern1;
     if (order == 0) {
@@ -329,4 +348,21 @@ std::string square(int order) {
         return pattern1 + "F-F+F-" + pattern1 + "F+F+" + pattern1 + "F-F+F-" + pattern1;
     }
 
+}
+//60 Degree plotter
+std::string schrad( int order) {
+    if ( order == 0){
+        return "F";
+    }
+    std::string prev = schrad(order -1);
+    std::string result  = "";
+    for( int i =0; i < prev.length(); i++){
+        if(prev[i] == 'F'){
+            result += "FF++F-F-F--F+F+F";
+        }
+        else{
+            result += prev[i];
+        }
+    }
+    return result;
 }
