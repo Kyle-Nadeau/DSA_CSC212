@@ -33,7 +33,7 @@ int main() {
     std::cin >> input;
 
     while (input != "1" && input != "2" && input != "3" && input != "4" && input != "5" && input != "6" && input != "7" && input != "8") {
-        std::cout << "Enter 1, 2, 3, 4, 5, 6, or 7:" << std::endl;
+        std::cout << "Enter 1, 2, 3, 4, 5, 6, 7, or 8:" << std::endl;
         std::cin >> input;
     }
     // Runs Koch Snowflake if user enters 1
@@ -135,7 +135,7 @@ int main() {
         std::string output = square(degree);
         of << output;
     }
-    // Runs Schraders Struct if user enters 8
+    // Runs Schraders Structure if user enters 8
     else if (input == "8") {
         std::cout << "Enter a degree of magnitude that is any integer from 1 to 8 for the Schraders Structure:" << std::endl;
         int degree;
@@ -170,7 +170,6 @@ int main() {
     }
 
     std::cout << "Thank you for using our program" << std::endl;
-
 }
 
 std::string koch_snowflake(int iteration) {
@@ -252,7 +251,6 @@ std::string closing_time(int order) {
 }
 
 
-
 //90 degrees
 //First order: F - F - F
 // Second: - F + F + F - F F - F - F + F + F - F - F F - F + F + F
@@ -298,6 +296,7 @@ std::string dragon(int order, bool type){
         return "- F " + pattern1 + "-" + pattern2;
     }
 }
+
 //60 degree plotter
 //(X -> X+YF++YF-FX--FXFX-YF+, Y -> -FX+YFYF++YF+FX--FX-Y, 60°):
 std::string peano_gosper(int order, bool type) {
@@ -336,6 +335,7 @@ std::string hilbert_curve2(int order, bool type){
         return pattern2 + "F" + pattern1 + "F" + pattern2 + "-F-" + pattern1 + "F" + pattern2 + "F" + pattern1 + "+F+" + pattern2 + "F" + pattern1 + "F" + pattern2;
     }
 }
+
 //X -> XF-F+F-XF+F+XF-F+F-X
 //90 Degree Plotter
 std::string square(int order) {
@@ -347,8 +347,8 @@ std::string square(int order) {
         pattern1 = square(order -1);
         return pattern1 + "F-F+F-" + pattern1 + "F+F+" + pattern1 + "F-F+F-" + pattern1;
     }
-
 }
+
 //60 Degree plotter
 std::string schrad( int order) {
     if ( order == 0){
