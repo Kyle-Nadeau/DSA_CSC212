@@ -39,7 +39,7 @@ If you are using G++:
  
      python3 plotter.py file.txt image.png <degree for turns>
   
-   
+     python3 coloringbook.py
 
 If you are using GCC:
   For the main.cpp, simply open your gcc compiler and use:
@@ -53,3 +53,5 @@ For the python file, it will not function using gcc, however you can use the ter
   
   
     python3 plotter.py file.txt image.png <degrees>
+    
+    python3 coloringbook.py
